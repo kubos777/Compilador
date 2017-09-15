@@ -1,0 +1,3 @@
+Aquí estarán los archivos necesarios para la fase de análisis léxico del compilador que se hará 
+para la clase de compiladores de la UNAM, facultad de ingeniería, semestre 2018-1
+
