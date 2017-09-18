@@ -1,8 +1,45 @@
+
 %{
 /*
 Programa que reconoce componentes léxicos definidos en clase*/
 
-	#include <string.h>
+	
+	/*Arreglos para definir las clases y tablas estáticas.*/
+
+	char* op_arit[] = {
+		"DIVIDE",
+		"MAS",
+		"MENOS",
+		"MULTIPLICA"
+	};
+
+	char* op_rel[] = {
+		">",
+		">=",
+		"<",
+		"<=",
+		"==",
+		"!="
+	};
+
+	char* pal_res[] = {
+		"ENT",
+		"ESCRIBE",
+		"HAZ",
+		"LEE",
+		"MIENTRAS",
+		"REAL",
+		"SI",
+		"SINO"
+	};
+
+	int buscaValor(char** tabla,char* valor) {
+		int i = 0;
+		while (strcmp(valor,tabla[i]) != 0) {
+			i++;
+		}
+		return i;
+	}
 
 	/*
 		Estructuras de datos (listas ligadas) para el manejo de los tokens, 
@@ -12,7 +49,7 @@ Programa que reconoce componentes léxicos definidos en clase*/
 	//Estructura para almacenar un token 
 	typedef struct token {
 		int clase;
-		int valor;
+		float valor;
 		struct token* siguiente;
 	}token_t;
 
@@ -29,6 +66,8 @@ Programa que reconoce componentes léxicos definidos en clase*/
 		char* valor;
 		struct entr_simbolo* siguiente;
 	}simbolo_t;
+
+	token_t* lista_token;
 
 	//Crea la lista ligada que almacenará los tokens
 	token_t* crearTablaTokens() {
@@ -67,7 +106,7 @@ Programa que reconoce componentes léxicos definidos en clase*/
 	}
 
 	//Crea un token con sus valores correspondientes de clase y valor
-	token_t* crearToken(int clase, int valor) {
+	token_t* crearToken(int clase, float valor) {
 		token_t* nuevo_token = malloc(sizeof(token_t));
 		if (nuevo_token == NULL) {
 			return NULL;
@@ -106,7 +145,7 @@ Programa que reconoce componentes léxicos definidos en clase*/
 	}
 
 	//Inserta un token en la lista de tokens
-	void insertarToken(token_t* tabla_token, int clase, int valor) {
+	void insertarToken(token_t* tabla_token, int clase, float valor) {
 		token_t* aux = tabla_token;
 		if (tabla_token->clase == -1) {
 			tabla_token->clase = clase;
@@ -185,7 +224,12 @@ Programa que reconoce componentes léxicos definidos en clase*/
 		token_t* aux = tabla_token;
 		printf("%8s%8s\n", "Clase","Valor");
 		while(aux != NULL) {
-			printf("%8d%8d\n",aux->clase,aux->valor);
+			if((aux->valor)/(int)(aux->valor) == 1 ) {
+				printf("%8d%10.0f\n",aux->clase,aux->valor);
+			}
+			else {
+				printf("%8d%10f\n",aux->clase,aux->valor);
+			}
 			aux = aux->siguiente;
 		}
 	}
@@ -212,25 +256,47 @@ Programa que reconoce componentes léxicos definidos en clase*/
 
 %}
 
-opArit [+\-*/%]
-opAsig {opArit}?=
+opArit MAS|MENOS|MULTIPLICA|DIVIDE
+palRes ENT|REAL|SI|SINO|MIENTRAS|HASTA|ESCRIBE|LEE
+opAsig =
 let [a-zA-Z_]
 dig [1-9]
 ident {let}({let}|{dig}|0){0,15}
-entBD {dig}({dig}|0)*(u|U)?(L|l)?
+simbEsp [,;\[\]\(\)]
+entBD {dig}({dig}|0)*
+numReal {entBD}\.[0-9]+
 constCad \"[^\"]+\"
+blank [ \t]
+
 
 %%
-{opArit} {printf("%s es un operador aritmetico.\n",yytext);}
-{opAsig} {printf("%s es un operador de asignacion.\n",yytext);}
+{opArit} {printf("%s es un operador aritmetico.\n",yytext);
+			insertarToken(lista_token,4,(float)buscaValor(op_arit,yytext));
+			}
+{palRes} {printf("%s es una palabra reservada.\n",yytext);
+			insertarToken(lista_token,1,(float)buscaValor(pal_res,yytext));}
+{opAsig} {printf("%s es un operador de asignacion.\n",yytext);
+			insertarToken(lista_token,2,(float)'=');}
 {ident} {printf("%s es un identificador.\n",yytext);}
-{entBD} {printf("%s es un entero en base diez.\n",yytext);}
+{entBD} {printf("%s es un entero en base diez.\n",yytext);
+			insertarToken(lista_token,6,atof(yytext));}
 {constCad} {printf("%s es una constante cadena.\n",yytext);}
+{simbEsp} {printf("%s es un simbolo especial.\n",yytext);
+			insertarToken(lista_token,5,(float)yytext[0]);}
+{numReal} {printf("%s es un numero real.\n",yytext);
+			insertarToken(lista_token,7,atof(yytext));}
+{blank} {/*No hace nada*/}
 . {printf("Error %s no es nada\n",yytext);}
+
 %%
+
+
+
 int main(int argc,char *argv[]){
+lista_token = crearTablaTokens();
 yyin=fopen(argv[1],"r");
 yylex();
 fclose(yyin);
+imprimirTokens(lista_token);
 return 0;
 }

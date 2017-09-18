@@ -1,0 +1,9 @@
+principal()
+[
+REAL x,y;
+x=2.2;
+y=x MENOS 5.1;
+ESCRIBE(y);
+ESCRIBE("Valor de y es",y);
+x = 1 MAS 3;
+]
