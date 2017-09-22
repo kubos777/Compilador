@@ -1,7 +1,10 @@
 
 %{
 /*
-Programa que reconoce componentes léxicos definidos en clase*/
+Programa que reconoce componentes léxicos definidos en clase.
+Analizador realizado por: 
+						Chávez Delgado Jorge Luis
+						Sánchez Neri David Yaxkin */
 	
 	
 	/*Arreglos para definir las clases y tablas estáticas.*/
