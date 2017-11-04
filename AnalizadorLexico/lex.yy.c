@@ -375,8 +375,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 12
-#define YY_END_OF_BUFFER 13
+#define YY_NUM_RULES 13
+#define YY_END_OF_BUFFER 14
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -384,16 +384,17 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[81] =
+static yyconst flex_int16_t yy_accept[84] =
     {   0,
-        0,    0,   13,   11,    9,    9,   11,   11,    7,    5,
-        3,   11,   11,   11,   11,   11,   11,   11,    4,    0,
-        0,    0,    5,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,    2,    4,    6,   10,    8,    0,    2,
-        0,    0,    1,    0,    0,    0,    0,    0,    4,    0,
-        0,    0,    0,    0,    0,    4,    0,    0,    0,    0,
-        4,    0,    0,    0,    4,    0,    0,    4,    0,    4,
-        0,    4,    4,    4,    4,    4,    4,    4,    4,    0
+        0,    0,   14,   12,   10,   10,   12,   12,   12,    8,
+        6,    2,    4,   12,   12,   12,   12,   12,   12,   12,
+        5,    2,    0,    0,    0,    6,    0,    0,    0,    0,
+        0,    0,    0,    0,    0,    0,    3,    5,    7,   11,
+        9,    0,    3,    0,    0,    1,    0,    0,    0,    0,
+        0,    5,    0,    0,    0,    0,    0,    0,    5,    0,
+        0,    0,    0,    5,    0,    0,    0,    5,    0,    0,
+        5,    0,    5,    0,    5,    5,    5,    5,    5,    5,
+        5,    5,    0
     } ;
 
 static yyconst YY_CHAR yy_ec[256] =
@@ -401,17 +402,17 @@ static yyconst YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    2,    1,    4,    1,    5,    1,    1,    1,    6,
-        6,    1,    1,    6,    1,    7,    1,    8,    9,    9,
-        9,    9,    9,    9,    9,    9,    9,    1,    6,    1,
-       10,    1,    1,    1,   11,   12,   13,   14,   15,    1,
-        1,   16,   17,    1,    1,   18,   19,   20,   21,   22,
-        1,   23,   24,   25,   26,   27,    1,    1,    1,    1,
-        6,    1,    6,    1,    1,    1,   28,   28,   28,   28,
+        1,    2,    4,    5,    1,    6,    1,    1,    1,    7,
+        7,    1,    1,    7,    1,    8,    1,    9,   10,   10,
+       10,   10,   10,   10,   10,   10,   10,    1,    7,   11,
+       12,   13,    1,    7,   14,   15,   16,   17,   18,    1,
+        1,   19,   20,    1,    1,   21,   22,   23,   24,   25,
+        1,   26,   27,   28,   29,   30,    1,    1,    1,   31,
+        7,    1,    7,    1,    1,    1,   32,   32,   32,   32,
 
-       28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
-       28,   28,   28,   28,   28,   28,   28,   28,   28,   28,
-       28,   28,    1,    1,    1,    1,    1,    1,    1,    1,
+       32,   32,   32,   32,   32,   32,   32,   32,   32,   32,
+       32,   32,   32,   32,   32,   32,   32,   32,   32,   32,
+       32,   32,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -428,81 +429,84 @@ static yyconst YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst YY_CHAR yy_meta[29] =
+static yyconst YY_CHAR yy_meta[33] =
     {   0,
-        1,    1,    2,    3,    2,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1
-    } ;
-
-static yyconst flex_uint16_t yy_base[83] =
-    {   0,
-        0,    0,  137,  138,  138,  138,    0,  131,  138,   22,
-      138,  118,   12,  123,  118,   22,  117,  114,   26,  126,
-        0,   32,   35,  102,  103,  114,  102,  110,  100,  103,
-      107,  103,  108,   94,   37,  138,    0,   41,   95,  138,
-       88,   85,  138,   87,   87,   81,   87,   82,   43,   88,
-       84,   89,   75,   73,   80,   47,   76,   75,   59,   58,
-       49,   63,   65,   56,   51,   46,   36,   53,   34,   55,
-       27,   58,   60,   64,   76,   81,   85,   87,  138,  138,
-      115,  117
-    } ;
-
-static yyconst flex_int16_t yy_def[83] =
-    {   0,
-       80,    1,   80,   80,   80,   80,   81,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,   81,
-       82,   80,   80,   80,   80,   80,   80,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   82,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,    0,
-       80,   80
-    } ;
-
-static yyconst flex_uint16_t yy_nxt[167] =
-    {   0,
-        4,    5,    6,    7,    8,    9,    4,    4,   10,   11,
-        4,    4,    4,   12,   13,   14,    4,   15,   16,    4,
-        4,    4,   17,   18,    4,    4,    4,   19,   22,   23,
-       23,   25,   29,   35,   35,   26,   30,   43,   31,   38,
-       38,   22,   23,   23,   49,   49,   71,   32,   38,   38,
-       56,   56,   69,   35,   61,   61,   65,   65,   68,   68,
-       70,   70,   72,   72,   49,   73,   73,   74,   74,   40,
-       56,   75,   75,   67,   61,   66,   65,   40,   68,   64,
-       70,   63,   72,   76,   76,   73,   62,   74,   77,   77,
-       43,   75,   78,   78,   79,   79,   60,   59,   43,   40,
-
-       58,   57,   40,   76,   40,   55,   54,   53,   77,   52,
-       51,   50,   78,   48,   79,   20,   20,   37,   47,   37,
-       46,   45,   44,   43,   40,   42,   41,   40,   39,   36,
-       34,   33,   28,   27,   24,   21,   80,    3,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,   80,
-       80,   80,   80,   80,   80,   80
-    } ;
-
-static yyconst flex_int16_t yy_chk[167] =
-    {   0,
+        1,    1,    2,    1,    3,    2,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,   10,   10,
-       10,   13,   16,   19,   19,   13,   16,   71,   16,   22,
-       22,   23,   23,   23,   35,   35,   69,   16,   38,   38,
-       49,   49,   67,   19,   56,   56,   61,   61,   65,   65,
-       68,   68,   70,   70,   35,   72,   72,   73,   73,   66,
-       49,   74,   74,   64,   56,   63,   61,   62,   65,   60,
-       68,   59,   70,   75,   75,   72,   58,   73,   76,   76,
-       57,   74,   77,   77,   78,   78,   55,   54,   53,   52,
+        1,    1
+    } ;
 
-       51,   50,   48,   75,   47,   46,   45,   44,   76,   42,
-       41,   39,   77,   34,   78,   81,   81,   82,   33,   82,
-       32,   31,   30,   29,   28,   27,   26,   25,   24,   20,
-       18,   17,   15,   14,   12,    8,    3,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,   80,
-       80,   80,   80,   80,   80,   80,   80,   80,   80,   80,
-       80,   80,   80,   80,   80,   80
+static yyconst flex_uint16_t yy_base[86] =
+    {   0,
+        0,    0,  143,  144,  144,  144,  130,    0,  135,  144,
+       25,  128,  127,  118,   11,  123,  118,   22,  117,  114,
+       34,  144,  128,    0,   36,   29,  102,  103,  114,   21,
+      110,   96,   98,  102,   98,  104,   94,   40,  144,    0,
+       44,   95,  144,   88,   85,  144,   88,   88,   81,   87,
+       83,   46,   89,   85,   90,   76,   69,   75,   48,   73,
+       74,   59,   58,   50,   63,   65,   56,   52,   44,   45,
+       54,   31,   58,   27,   60,   64,   66,   78,   84,   90,
+       92,  144,  144,  124,  126
+    } ;
+
+static yyconst flex_int16_t yy_def[86] =
+    {   0,
+       83,    1,   83,   83,   83,   83,   83,   84,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   84,   85,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   85,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,    0,   83,   83
+    } ;
+
+static yyconst flex_uint16_t yy_nxt[177] =
+    {   0,
+        4,    5,    6,    7,    8,    9,   10,    4,   11,   11,
+       12,   13,   12,    4,    4,    4,   14,   15,   16,    4,
+       17,   18,    4,    4,    4,   19,   20,    4,    4,    4,
+        4,   21,   25,   28,   26,   32,   25,   29,   26,   33,
+       46,   34,   38,   38,   41,   41,   74,   45,   52,   52,
+       35,   43,   41,   41,   59,   59,   64,   64,   68,   68,
+       71,   71,   73,   73,   72,   38,   75,   75,   76,   76,
+       43,   52,   77,   77,   78,   78,   70,   59,   69,   64,
+       43,   68,   67,   71,   66,   73,   79,   79,   65,   75,
+       46,   76,   80,   80,   63,   77,   62,   78,   81,   81,
+
+       82,   82,   46,   43,   61,   60,   43,   43,   58,   79,
+       57,   56,   55,   54,   53,   80,   51,   50,   49,   48,
+       47,   81,   46,   82,   23,   23,   40,   43,   40,   44,
+       43,   42,   39,   37,   36,   31,   30,   27,   22,   22,
+       24,   22,   83,    3,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83
+    } ;
+
+static yyconst flex_int16_t yy_chk[177] =
+    {   0,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,   11,   15,   11,   18,   26,   15,   26,   18,
+       74,   18,   21,   21,   25,   25,   72,   30,   38,   38,
+       18,   30,   41,   41,   52,   52,   59,   59,   64,   64,
+       68,   68,   71,   71,   70,   21,   73,   73,   75,   75,
+       69,   38,   76,   76,   77,   77,   67,   52,   66,   59,
+       65,   64,   63,   68,   62,   71,   78,   78,   61,   73,
+       60,   75,   79,   79,   58,   76,   57,   77,   80,   80,
+
+       81,   81,   56,   55,   54,   53,   51,   50,   49,   78,
+       48,   47,   45,   44,   42,   79,   37,   36,   35,   34,
+       33,   80,   32,   81,   84,   84,   85,   31,   85,   29,
+       28,   27,   23,   20,   19,   17,   16,   14,   13,   12,
+        9,    7,    3,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -522,41 +526,50 @@ char *yytext;
 #line 1 "analizadorL.l"
 #line 3 "analizadorL.l"
 /*
-Programa que reconoce componentes léxicos definidos en clase*/
+Programa que reconoce componentes léxicos definidos en clase.
+Analizador realizado por: 
+						Chávez Delgado Jorge Luis
+						Sánchez Neri David Yaxkin */
 	
-	
+	/**********************************************************
+
+					ANALIZADOR LEXICO
+
+	**********************************************************/
+
+
 	/*Arreglos para definir las clases y tablas estáticas.*/
 
-	char* op_arit[] = {
-		"DIVIDE",
-		"MAS",
-		"MENOS",
-		"MULTIPLICA"
+	char* op_arit[][2] = {
+		{ "DIVIDE",		"/" },
+		{ "MAS",		"+" },
+		{ "MENOS",		"-" },
+		{ "MULTIPLICA",	"*" }
 	};
 
-	char* op_rel[] = {
-		">",
-		">=",
-		"<",
-		"<=",
-		"==",
-		"!="
+	char* op_rel[][2] = {
+		{ ">",	">" },
+		{ ">=", "g" },
+		{ "<", 	"<" },
+		{ "<=", "p" },
+		{ "==", "q" },
+		{ "!=", "!" }
 	};
 
-	char* pal_res[] = {
-		"ENT",
-		"ESCRIBE",
-		"HAZ",
-		"LEE",
-		"MIENTRAS",
-		"REAL",
-		"SI",
-		"SINO"
+	char* pal_res[][2] = {
+		{ "ENT", 		"t" },
+		{ "ESCRIBE", 	"w" },
+		{ "HAZ", 		"h" },
+		{ "LEE", 		"l" },
+		{ "MIENTRAS",	"m" },
+		{ "REAL", 		"r" },
+		{ "SI", 		"i" },
+		{ "SINO", 		"e" },
 	};
 
-	int buscaValor(char** tabla,char* valor) {
+	int buscaValor(char* tabla[][2],char* valor) {
 		int i = 0;
-		while (strcmp(valor,tabla[i]) != 0) {
+		while (strcmp(valor,tabla[i][0]) != 0) {
 			i++;
 		}
 		return i;
@@ -777,7 +790,678 @@ Programa que reconoce componentes léxicos definidos en clase*/
 		}
 	}
 
-#line 781 "lex.yy.c"
+
+	/**********************************************************
+
+					ANALIZADOR SINTACTICO
+
+	**********************************************************/
+
+	//Código para crear la cadena que servirá para el análisis sintáctico descendente
+	char* cadena;
+	char c;
+	char buffer[1];
+	int iterador = 0;
+	int var_error = 0;
+
+	//Prototipos de las funciones del parser
+	void parser();
+	void P();
+	void LF();
+	void FUN();
+	void LA();
+	void LAP();
+	void LD();
+	void D();
+	void V();
+	void C();
+	void N();
+	void L();
+	void BP();
+	void PR();
+	void S();
+	void PC();
+	void A();
+	void W();
+	void WP();
+	void WPP();
+	void R();
+	void RP();
+	void H();
+	void M();
+	void I();
+	void REL();
+	void OR();
+	void LP();
+	void LPA();
+	void E();
+	void EP();
+	void T();
+	void TP();
+	void F();
+	void error();
+
+
+	//Definiciones de las funciones del parser recursivo descendente 
+
+	void parser(){
+		c=cadena[iterador++];
+		P();
+		if (buffer=='\0' || var_error == 0)
+		{
+			printf("\nEl programa no presenta errores sintácticos.\n");
+		}
+		else{
+			printf("\nEl programa contiene errores sintácticos.\n");
+		}
+	}
+	void P() {
+		if (c == 't' || c == 'r' || c == 'a') {
+			LF();
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void LF() {
+		if (c == '\0') {
+			return;
+		}
+		else if (c == 't' || c == 'r' || c == 'a') {
+			FUN();
+			LF();
+		}
+		else {
+			return;
+		}
+	}
+	void FUN() {
+		if(c == 't' || c == 'r') {
+			V();
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '(') { 
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LA();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '[') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LD();
+			BP();
+			if (c == ']') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else if (c == 'a') {
+			c = cadena[iterador++];
+			if (c == '(') { 
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LA();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '[') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LD();
+			BP();
+			if (c == ']') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+			return;
+		}
+	}
+	void LA() {
+		if (c == ')') {
+			return;
+		}
+		else if(c == 't' || c == 'r') {
+			V();
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LAP();
+		}
+		else {
+			error();
+			return;
+		}
+	}
+	void LAP() {
+		if (c == ')') {
+			return;
+		}
+		else if (c == ',') {
+			c = cadena[iterador++];
+			V();
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LAP();
+		}
+		else {
+			error();
+		}
+	}
+	void LD() {
+		if (c == ']' || c == '@' || c == 'a' || c == 'w' || c == 'l' || c == 'h' || c == 'm' || c == 'i' || c == '[') {
+			return;
+		}
+		else if(c == 't' || c == 'r') {
+			D();
+			LD();
+		}
+		else {
+			error();
+		}
+	}
+	void D() {
+		if (c == 't' || c == 'r') {
+			V();
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			C();
+			L();
+		}
+		else {
+			error();
+		}
+	}
+	void V() {
+		if (c == 't' || c == 'r') {
+			c = cadena[iterador++];	
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void C() {
+		if (c == ',' || c == ';') {
+			return;
+		}
+		else if (c == '=') {
+			c = cadena[iterador++];
+			N();
+		}
+		else {
+			error();
+		}
+
+	}
+	void N() {
+		if (c == 'n' || c == 'c') {
+			c = cadena[iterador++];
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void L() {
+		if (c == ',') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			C();
+			L();
+		}
+		else if (c == ';') {
+			c = cadena[iterador++];
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void BP() {
+		if (c == ']') {
+			return;
+		}
+		else if (c == 'a' || c == 'w' || c == 'l' || c == 'h' || c == 'm' || c == 'i' || c == '[' || c == '@') {
+			PR();
+			BP();
+		}
+		else {
+			error();
+		}
+	}
+	void PR() {
+		if (c == 'a' || c == 'w' || c == 'l' || c == 'h' || c == 'm' || c == 'i' || c == '@') {
+			S();
+		}
+		else if (c == '[') {
+			PC();
+		}
+	}
+	void S() {
+		if (c == 'a') {
+			A();
+		}
+		else if (c == 'w') {
+			W();
+		}
+		else if (c == 'l') {
+			R();
+		}
+		else if (c == 'h') {
+			H();
+		}
+		else if (c == 'm') {
+			M();
+		}
+		else if (c == 'i') {
+			I();
+		}
+		else if (c == '@') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LP();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == ';') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void PC() {
+		if (c == '[') {
+			c = cadena[iterador++];
+			BP();
+			if (c == ']') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void A() {
+		if (c == 'a') {
+			c = cadena[iterador++];
+			if (c == '=') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			E();
+			if (c == ';') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void W() {
+		if (c == 'w') {
+			c = cadena[iterador++];
+			WP();
+		}
+		else {
+			error();
+		}
+	}
+	void WP() {
+		if (c == 'a' || c == 'c' || c == 'n' || c == 's') {
+			c = cadena[iterador++];
+			WPP();
+		}
+		else {
+			error();
+		}
+	}
+	void WPP() {
+		if (c == ',') {
+			c = cadena[iterador++];
+			WP();
+		}
+		else if (c == ';') {
+			c = cadena[iterador++];
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void R() {
+		if (c == 'l') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			RP();
+		}
+		else {
+			error();
+		}
+	}
+	void RP() {
+		if (c == ',') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			RP();
+		}
+		else if (c == ';') {
+			c = cadena[iterador++];
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void H() {
+		if (c == 'h') {
+			c = cadena[iterador++];	
+			if (c == '[') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			BP();
+			if (c == ']') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == 'm') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			REL();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void M() {
+		if (c == 'm') {
+			c = cadena[iterador++];
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			REL();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			PR();
+		}
+		else {
+			error();
+		}
+	}
+	void I() {
+		if (c == 'i') {
+			c = cadena[iterador++];
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			REL();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			PR();
+			if (c == 'e') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			PR();
+		}
+		else {
+			error();
+		}
+	}
+	void REL() {
+		if (c == '(' || c == 'a' || c == 'n' || c == 'c' || c == '@') {
+			E();
+			OR();
+			E();
+		}
+		else {
+			error();
+		}
+	}
+	void OR() {
+		if (c == '>' || c == 'g' || c == '<' || c == 'p' || c == 'q' || c == '!' ) {
+			c = cadena[iterador++];
+		}
+		else {
+			error();
+		}
+	}
+	void LP() {
+		if (c == '(' || c == 'a' || c == 'n' || c == 'c' || c == '@') {
+			E();
+			LPA();
+		}
+		else if (c == ')') {
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void LPA() {
+		if (c == ')') {
+			return;
+		}
+		else if(c == ',') {
+			c = cadena[iterador++];
+			E();
+			LPA();
+		}
+		else {
+			error();
+		}
+	}
+	void E() {
+		if (c == '(' || c == 'a' || c == 'n' || c == 'c' || c == '@') {
+			T();
+			EP();
+		}
+		else {
+			error();
+		}
+	}
+	void EP() {
+ 		if (c == '+' || c == '-') {
+ 			c = cadena[iterador++];
+ 			T();
+ 			EP();
+ 		}
+ 		else if (c == ',' || c == ';' || c == ')' || c == '>' || c == 'g' || c == '<' || c == 'p' || c == 'q' || c == '!') {
+			return;
+ 		}
+ 		else {
+ 			error();
+ 		}
+	}
+	void T() {
+		if (c == '(' || c == 'a' || c == 'n' || c == 'c' || c == '@') {
+			F();
+			TP();
+		}
+		else {
+			error();
+		}
+	}
+	void TP() {
+ 		if (c == '*' || c == '/') {
+ 			c = cadena[iterador++];
+ 			F();
+ 			TP();
+ 		}
+ 		else if (c == '+' || c == '-' || c == ';' || c == ')' || c == '>' || 
+ 				c == 'g' || c == '<' || c == 'p' || c == 'q' || c == '!' || c == ',') {
+			return;
+ 		}
+ 		else {
+ 			error();
+ 		}
+	}
+	void F() {
+		if (c == 'a' || c == 'n' || c == 'c') {
+			c = cadena[iterador++];
+		}
+		else if (c == '@') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LP();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else if (c == '(') {
+			c = cadena[iterador++];	
+			E();
+			if (c == ')') {
+				c = cadena[iterador++];	
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void error() {
+		printf("Error sintáctico en el caracter %i de la cadena de átomos: %c\n", iterador, cadena[iterador-1]);
+		var_error = 1;
+	}
+
+#line 1465 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -995,9 +1679,9 @@ YY_DECL
 		}
 
 	{
-#line 275 "analizadorL.l"
+#line 956 "analizadorL.l"
 
-#line 1001 "lex.yy.c"
+#line 1685 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1024,13 +1708,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 81 )
+				if ( yy_current_state >= 84 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 138 );
+		while ( yy_base[yy_current_state] != 144 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -1056,80 +1740,120 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 276 "analizadorL.l"
+#line 957 "analizadorL.l"
 {printf("%s es un operador aritmetico.\n",yytext);
 			insertarToken(lista_token,4,(float)buscaValor(op_arit,yytext));
+			buffer[0] = op_arit[buscaValor(op_arit,yytext)][1][0];
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
 			}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 279 "analizadorL.l"
-{printf("%s es una palabra reservada.\n",yytext);
-			insertarToken(lista_token,1,(float)buscaValor(pal_res,yytext));}
+#line 963 "analizadorL.l"
+{printf("%s es un operador aritmetico.\n",yytext);
+			insertarToken(lista_token,3,(float)buscaValor(op_rel,yytext));
+			buffer[0] = op_rel[buscaValor(op_rel,yytext)][1][0];
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 281 "analizadorL.l"
-{printf("%s es un operador de asignacion.\n",yytext);
-			insertarToken(lista_token,2,(float)'=');}
+#line 969 "analizadorL.l"
+{printf("%s es una palabra reservada.\n",yytext);
+			insertarToken(lista_token,1,(float)buscaValor(pal_res,yytext));
+			buffer[0] = pal_res[buscaValor(pal_res,yytext)][1][0];
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 283 "analizadorL.l"
-{printf("%s es un identificador.\n",yytext);
-			if(buscarSimbolo(tabla_simbolos,yytext) == -1) {
-				insertarSimbolo(tabla_simbolos,num_id++,yytext);
+#line 975 "analizadorL.l"
+{printf("%s es un operador de asignacion.\n",yytext);
+			insertarToken(lista_token,2,(float)'=');
+			buffer[0] = '=';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
 			}
-			insertarToken(lista_token,0,buscarSimbolo(tabla_simbolos,yytext));}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 288 "analizadorL.l"
-{printf("%s es un entero en base diez.\n",yytext);
-			insertarToken(lista_token,6,atof(yytext));}
+#line 981 "analizadorL.l"
+{printf("%s es un identificador.\n",yytext);
+				if(buscarSimbolo(tabla_simbolos,yytext) == -1) {
+					insertarSimbolo(tabla_simbolos,num_id++,yytext);
+				}
+			insertarToken(lista_token,0,buscarSimbolo(tabla_simbolos,yytext));
+			buffer[0] = 'a';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);}
 	YY_BREAK
 case 6:
-/* rule 6 can match eol */
 YY_RULE_SETUP
-#line 290 "analizadorL.l"
-{printf("%s es una constante cadena.\n",yytext);
-			insertarCadena(tabla_cadenas,num_cadenas,yytext);
-			insertarToken(lista_token,8,(float)num_cadenas++);}
+#line 989 "analizadorL.l"
+{printf("%s es un entero en base diez.\n",yytext);
+			insertarToken(lista_token,6,atof(yytext));
+			buffer[0] = 'c';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
 	YY_BREAK
 case 7:
+/* rule 7 can match eol */
 YY_RULE_SETUP
-#line 293 "analizadorL.l"
-{printf("%s es un simbolo especial.\n",yytext);
-			insertarToken(lista_token,5,(float)yytext[0]);}
+#line 995 "analizadorL.l"
+{printf("%s es una constante cadena.\n",yytext);
+			insertarCadena(tabla_cadenas,num_cadenas,yytext);
+			insertarToken(lista_token,8,(float)num_cadenas++);
+			buffer[0] = 's';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 295 "analizadorL.l"
-{printf("%s es un numero real.\n",yytext);
-			insertarToken(lista_token,7,atof(yytext));}
+#line 1002 "analizadorL.l"
+{printf("%s es un simbolo especial.\n",yytext);
+			insertarToken(lista_token,5,(float)yytext[0]);
+			buffer[0] = yytext[0];
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
 	YY_BREAK
 case 9:
-/* rule 9 can match eol */
 YY_RULE_SETUP
-#line 297 "analizadorL.l"
-{/*No hace nada*/}
+#line 1008 "analizadorL.l"
+{printf("%s es un numero real.\n",yytext);
+			insertarToken(lista_token,7,atof(yytext));
+			buffer[0] = 'n';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
 	YY_BREAK
 case 10:
+/* rule 10 can match eol */
 YY_RULE_SETUP
-#line 298 "analizadorL.l"
+#line 1014 "analizadorL.l"
 {/*No hace nada*/}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 299 "analizadorL.l"
-{printf("Error %s no es nada\n",yytext);}
+#line 1015 "analizadorL.l"
+{/*No hace nada*/}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 301 "analizadorL.l"
+#line 1016 "analizadorL.l"
+{printf("Error %s no es nada\n",yytext);}
+	YY_BREAK
+case 13:
+YY_RULE_SETUP
+#line 1018 "analizadorL.l"
 ECHO;
 	YY_BREAK
-#line 1133 "lex.yy.c"
+#line 1857 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1422,7 +2146,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 81 )
+			if ( yy_current_state >= 84 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1450,11 +2174,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 81 )
+		if ( yy_current_state >= 84 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 80);
+	yy_is_jam = (yy_current_state == 83);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -2130,9 +2854,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 301 "analizadorL.l"
-
-
+#line 1018 "analizadorL.l"
 
 
 
@@ -2140,12 +2862,15 @@ int main(int argc,char *argv[]){
 lista_token = crearTablaTokens();
 tabla_simbolos = crearTablaSimbolos();
 tabla_cadenas = crearTablaCadenas();
+cadena = (char*)malloc(sizeof(char));
 yyin=fopen(argv[1],"r");
 yylex();
 fclose(yyin);
 imprimirCadenas(tabla_cadenas);	
 imprimirSimbolos(tabla_simbolos);
 imprimirTokens(lista_token);
+printf("La cadena de átomos correspondiente al programa analizado es:\n%s\n",cadena);
+parser();
 return 0;
 }
 

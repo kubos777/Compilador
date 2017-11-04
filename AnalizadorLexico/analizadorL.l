@@ -6,39 +6,45 @@ Analizador realizado por:
 						Chávez Delgado Jorge Luis
 						Sánchez Neri David Yaxkin */
 	
-	
+	/**********************************************************
+
+					ANALIZADOR LEXICO
+
+	**********************************************************/
+
+
 	/*Arreglos para definir las clases y tablas estáticas.*/
 
-	char* op_arit[] = {
-		"DIVIDE",
-		"MAS",
-		"MENOS",
-		"MULTIPLICA"
+	char* op_arit[][2] = {
+		{ "DIVIDE",		"/" },
+		{ "MAS",		"+" },
+		{ "MENOS",		"-" },
+		{ "MULTIPLICA",	"*" }
 	};
 
-	char* op_rel[] = {
-		">",
-		">=",
-		"<",
-		"<=",
-		"==",
-		"!="
+	char* op_rel[][2] = {
+		{ ">",	">" },
+		{ ">=", "g" },
+		{ "<", 	"<" },
+		{ "<=", "p" },
+		{ "==", "q" },
+		{ "!=", "!" }
 	};
 
-	char* pal_res[] = {
-		"ENT",
-		"ESCRIBE",
-		"HAZ",
-		"LEE",
-		"MIENTRAS",
-		"REAL",
-		"SI",
-		"SINO"
+	char* pal_res[][2] = {
+		{ "ENT", 		"t" },
+		{ "ESCRIBE", 	"w" },
+		{ "HAZ", 		"h" },
+		{ "LEE", 		"l" },
+		{ "MIENTRAS",	"m" },
+		{ "REAL", 		"r" },
+		{ "SI", 		"i" },
+		{ "SINO", 		"e" },
 	};
 
-	int buscaValor(char** tabla,char* valor) {
+	int buscaValor(char* tabla[][2],char* valor) {
 		int i = 0;
-		while (strcmp(valor,tabla[i]) != 0) {
+		while (strcmp(valor,tabla[i][0]) != 0) {
 			i++;
 		}
 		return i;
@@ -259,16 +265,688 @@ Analizador realizado por:
 		}
 	}
 
+
+	/**********************************************************
+
+					ANALIZADOR SINTACTICO
+
+	**********************************************************/
+
+	//Código para crear la cadena que servirá para el análisis sintáctico descendente
+	char* cadena;
+	char c;
+	char buffer[1];
+	int iterador = 0;
+	int var_error = 0;
+
+	//Prototipos de las funciones del parser
+	void parser();
+	void P();
+	void LF();
+	void FUN();
+	void LA();
+	void LAP();
+	void LD();
+	void D();
+	void V();
+	void C();
+	void N();
+	void L();
+	void BP();
+	void PR();
+	void S();
+	void PC();
+	void A();
+	void W();
+	void WP();
+	void WPP();
+	void R();
+	void RP();
+	void H();
+	void M();
+	void I();
+	void REL();
+	void OR();
+	void LP();
+	void LPA();
+	void E();
+	void EP();
+	void T();
+	void TP();
+	void F();
+	void error();
+
+
+	//Definiciones de las funciones del parser recursivo descendente 
+
+	void parser(){
+		c=cadena[iterador++];
+		P();
+		if (buffer=='\0' || var_error == 0)
+		{
+			printf("\nEl programa no presenta errores sintácticos.\n");
+		}
+		else{
+			printf("\nEl programa contiene errores sintácticos.\n");
+		}
+	}
+	void P() {
+		if (c == 't' || c == 'r' || c == 'a') {
+			LF();
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void LF() {
+		if (c == '\0') {
+			return;
+		}
+		else if (c == 't' || c == 'r' || c == 'a') {
+			FUN();
+			LF();
+		}
+		else {
+			return;
+		}
+	}
+	void FUN() {
+		if(c == 't' || c == 'r') {
+			V();
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '(') { 
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LA();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '[') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LD();
+			BP();
+			if (c == ']') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else if (c == 'a') {
+			c = cadena[iterador++];
+			if (c == '(') { 
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LA();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '[') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LD();
+			BP();
+			if (c == ']') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+			return;
+		}
+	}
+	void LA() {
+		if (c == ')') {
+			return;
+		}
+		else if(c == 't' || c == 'r') {
+			V();
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LAP();
+		}
+		else {
+			error();
+			return;
+		}
+	}
+	void LAP() {
+		if (c == ')') {
+			return;
+		}
+		else if (c == ',') {
+			c = cadena[iterador++];
+			V();
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LAP();
+		}
+		else {
+			error();
+		}
+	}
+	void LD() {
+		if (c == ']' || c == '@' || c == 'a' || c == 'w' || c == 'l' || c == 'h' || c == 'm' || c == 'i' || c == '[') {
+			return;
+		}
+		else if(c == 't' || c == 'r') {
+			D();
+			LD();
+		}
+		else {
+			error();
+		}
+	}
+	void D() {
+		if (c == 't' || c == 'r') {
+			V();
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			C();
+			L();
+		}
+		else {
+			error();
+		}
+	}
+	void V() {
+		if (c == 't' || c == 'r') {
+			c = cadena[iterador++];	
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void C() {
+		if (c == ',' || c == ';') {
+			return;
+		}
+		else if (c == '=') {
+			c = cadena[iterador++];
+			N();
+		}
+		else {
+			error();
+		}
+
+	}
+	void N() {
+		if (c == 'n' || c == 'c') {
+			c = cadena[iterador++];
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void L() {
+		if (c == ',') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			C();
+			L();
+		}
+		else if (c == ';') {
+			c = cadena[iterador++];
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void BP() {
+		if (c == ']') {
+			return;
+		}
+		else if (c == 'a' || c == 'w' || c == 'l' || c == 'h' || c == 'm' || c == 'i' || c == '[' || c == '@') {
+			PR();
+			BP();
+		}
+		else {
+			error();
+		}
+	}
+	void PR() {
+		if (c == 'a' || c == 'w' || c == 'l' || c == 'h' || c == 'm' || c == 'i' || c == '@') {
+			S();
+		}
+		else if (c == '[') {
+			PC();
+		}
+	}
+	void S() {
+		if (c == 'a') {
+			A();
+		}
+		else if (c == 'w') {
+			W();
+		}
+		else if (c == 'l') {
+			R();
+		}
+		else if (c == 'h') {
+			H();
+		}
+		else if (c == 'm') {
+			M();
+		}
+		else if (c == 'i') {
+			I();
+		}
+		else if (c == '@') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LP();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == ';') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void PC() {
+		if (c == '[') {
+			c = cadena[iterador++];
+			BP();
+			if (c == ']') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void A() {
+		if (c == 'a') {
+			c = cadena[iterador++];
+			if (c == '=') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			E();
+			if (c == ';') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void W() {
+		if (c == 'w') {
+			c = cadena[iterador++];
+			WP();
+		}
+		else {
+			error();
+		}
+	}
+	void WP() {
+		if (c == 'a' || c == 'c' || c == 'n' || c == 's') {
+			c = cadena[iterador++];
+			WPP();
+		}
+		else {
+			error();
+		}
+	}
+	void WPP() {
+		if (c == ',') {
+			c = cadena[iterador++];
+			WP();
+		}
+		else if (c == ';') {
+			c = cadena[iterador++];
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void R() {
+		if (c == 'l') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			RP();
+		}
+		else {
+			error();
+		}
+	}
+	void RP() {
+		if (c == ',') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			RP();
+		}
+		else if (c == ';') {
+			c = cadena[iterador++];
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void H() {
+		if (c == 'h') {
+			c = cadena[iterador++];	
+			if (c == '[') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			BP();
+			if (c == ']') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == 'm') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			REL();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void M() {
+		if (c == 'm') {
+			c = cadena[iterador++];
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			REL();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			PR();
+		}
+		else {
+			error();
+		}
+	}
+	void I() {
+		if (c == 'i') {
+			c = cadena[iterador++];
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			REL();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			PR();
+			if (c == 'e') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			PR();
+		}
+		else {
+			error();
+		}
+	}
+	void REL() {
+		if (c == '(' || c == 'a' || c == 'n' || c == 'c' || c == '@') {
+			E();
+			OR();
+			E();
+		}
+		else {
+			error();
+		}
+	}
+	void OR() {
+		if (c == '>' || c == 'g' || c == '<' || c == 'p' || c == 'q' || c == '!' ) {
+			c = cadena[iterador++];
+		}
+		else {
+			error();
+		}
+	}
+	void LP() {
+		if (c == '(' || c == 'a' || c == 'n' || c == 'c' || c == '@') {
+			E();
+			LPA();
+		}
+		else if (c == ')') {
+			return;
+		}
+		else {
+			error();
+		}
+	}
+	void LPA() {
+		if (c == ')') {
+			return;
+		}
+		else if(c == ',') {
+			c = cadena[iterador++];
+			E();
+			LPA();
+		}
+		else {
+			error();
+		}
+	}
+	void E() {
+		if (c == '(' || c == 'a' || c == 'n' || c == 'c' || c == '@') {
+			T();
+			EP();
+		}
+		else {
+			error();
+		}
+	}
+	void EP() {
+ 		if (c == '+' || c == '-') {
+ 			c = cadena[iterador++];
+ 			T();
+ 			EP();
+ 		}
+ 		else if (c == ',' || c == ';' || c == ')' || c == '>' || c == 'g' || c == '<' || c == 'p' || c == 'q' || c == '!') {
+			return;
+ 		}
+ 		else {
+ 			error();
+ 		}
+	}
+	void T() {
+		if (c == '(' || c == 'a' || c == 'n' || c == 'c' || c == '@') {
+			F();
+			TP();
+		}
+		else {
+			error();
+		}
+	}
+	void TP() {
+ 		if (c == '*' || c == '/') {
+ 			c = cadena[iterador++];
+ 			F();
+ 			TP();
+ 		}
+ 		else if (c == '+' || c == '-' || c == ';' || c == ')' || c == '>' || 
+ 				c == 'g' || c == '<' || c == 'p' || c == 'q' || c == '!' || c == ',git ') {
+			return;
+ 		}
+ 		else {
+ 			error();
+ 		}
+	}
+	void F() {
+		if (c == 'a' || c == 'n' || c == 'c') {
+			c = cadena[iterador++];
+		}
+		else if (c == '@') {
+			c = cadena[iterador++];
+			if (c == 'a') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			if (c == '(') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+			LP();
+			if (c == ')') {
+				c = cadena[iterador++];
+			}
+			else {
+				error();
+			}
+		}
+		else if (c == '(') {
+			c = cadena[iterador++];	
+			E();
+			if (c == ')') {
+				c = cadena[iterador++];	
+			}
+			else {
+				error();
+			}
+		}
+		else {
+			error();
+		}
+	}
+	void error() {
+		printf("Error sintáctico en el caracter %i de la cadena de átomos: %c\n", iterador, cadena[iterador-1]);
+		var_error = 1;
+	}
+
 %}
 
 opArit MAS|MENOS|MULTIPLICA|DIVIDE
-palRes ENT|REAL|SI|SINO|MIENTRAS|HASTA|ESCRIBE|LEE
+palRes ENT|REAL|SI|SINO|HAZ|MIENTRAS|HASTA|ESCRIBE|LEE
+opRel (<|>|!|=)=|<|>
 opAsig =
 let [a-z]
 dig [1-9]
 ident {let}({let}|{dig}|0){0,15}
-simbEsp [,;\[\]\(\)]
-entBD {dig}({dig}|0)*
+simbEsp [,;\[\]\(\)@]
+entBD (0|{dig}){dig}*
 numReal {entBD}\.[0-9]+
 constCad \"[^\"]+\"
 comentario \$\$[^\$\n]+
@@ -276,44 +954,81 @@ blank [ \t\n]
 
 
 %%
-{opArit} {printf("%s es un operador aritmetico.\n",yytext);
+{opArit} 	{printf("%s es un operador aritmetico.\n",yytext);
 			insertarToken(lista_token,4,(float)buscaValor(op_arit,yytext));
+			buffer[0] = op_arit[buscaValor(op_arit,yytext)][1][0];
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
 			}
-{palRes} {printf("%s es una palabra reservada.\n",yytext);
-			insertarToken(lista_token,1,(float)buscaValor(pal_res,yytext));}
-{opAsig} {printf("%s es un operador de asignacion.\n",yytext);
-			insertarToken(lista_token,2,(float)'=');}
-{ident} {printf("%s es un identificador.\n",yytext);
-			if(buscarSimbolo(tabla_simbolos,yytext) == -1) {
-				insertarSimbolo(tabla_simbolos,num_id++,yytext);
+{opRel}		{printf("%s es un operador aritmetico.\n",yytext);
+			insertarToken(lista_token,3,(float)buscaValor(op_rel,yytext));
+			buffer[0] = op_rel[buscaValor(op_rel,yytext)][1][0];
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
 			}
-			insertarToken(lista_token,0,buscarSimbolo(tabla_simbolos,yytext));}
-{entBD} {printf("%s es un entero en base diez.\n",yytext);
-			insertarToken(lista_token,6,atof(yytext));}
-{constCad} {printf("%s es una constante cadena.\n",yytext);
+{palRes} 	{printf("%s es una palabra reservada.\n",yytext);
+			insertarToken(lista_token,1,(float)buscaValor(pal_res,yytext));
+			buffer[0] = pal_res[buscaValor(pal_res,yytext)][1][0];
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
+{opAsig} 	{printf("%s es un operador de asignacion.\n",yytext);
+			insertarToken(lista_token,2,(float)'=');
+			buffer[0] = '=';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
+{ident} 	{printf("%s es un identificador.\n",yytext);
+				if(buscarSimbolo(tabla_simbolos,yytext) == -1) {
+					insertarSimbolo(tabla_simbolos,num_id++,yytext);
+				}
+			insertarToken(lista_token,0,buscarSimbolo(tabla_simbolos,yytext));
+			buffer[0] = 'a';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);}
+{entBD} 	{printf("%s es un entero en base diez.\n",yytext);
+			insertarToken(lista_token,6,atof(yytext));
+			buffer[0] = 'c';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
+{constCad} 	{printf("%s es una constante cadena.\n",yytext);
 			insertarCadena(tabla_cadenas,num_cadenas,yytext);
-			insertarToken(lista_token,8,(float)num_cadenas++);}
-{simbEsp} {printf("%s es un simbolo especial.\n",yytext);
-			insertarToken(lista_token,5,(float)yytext[0]);}
-{numReal} {printf("%s es un numero real.\n",yytext);
-			insertarToken(lista_token,7,atof(yytext));}
-{blank} {/*No hace nada*/}
+			insertarToken(lista_token,8,(float)num_cadenas++);
+			buffer[0] = 's';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
+{simbEsp} 	{printf("%s es un simbolo especial.\n",yytext);
+			insertarToken(lista_token,5,(float)yytext[0]);
+			buffer[0] = yytext[0];
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
+{numReal} 	{printf("%s es un numero real.\n",yytext);
+			insertarToken(lista_token,7,atof(yytext));
+			buffer[0] = 'n';
+			cadena = realloc(cadena,(strlen(cadena)+2)*sizeof(char));
+			strncat(cadena,buffer,1);
+			}
+{blank} 	{/*No hace nada*/}
 {comentario} {/*No hace nada*/}
-. {printf("Error %s no es nada\n",yytext);}
+. 			{printf("Error %s no es nada\n",yytext);}
 
 %%
-
-
 
 int main(int argc,char *argv[]){
 lista_token = crearTablaTokens();
 tabla_simbolos = crearTablaSimbolos();
 tabla_cadenas = crearTablaCadenas();
+cadena = (char*)malloc(sizeof(char));
 yyin=fopen(argv[1],"r");
 yylex();
 fclose(yyin);
 imprimirCadenas(tabla_cadenas);	
 imprimirSimbolos(tabla_simbolos);
 imprimirTokens(lista_token);
+printf("La cadena de átomos correspondiente al programa analizado es:\n%s\n",cadena);
+parser();
 return 0;
 }
