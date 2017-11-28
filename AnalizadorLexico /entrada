@@ -1,0 +1,18 @@
+$$Programa de prueba
+principal()
+[
+REAL x,y;
+x=2.2;
+y=x MENOS 5.1;
+ESCRIBE(y);
+ESCRIBE("Valor de y es",y);
+$$Código extra
+x = 1 MAS 3;
+1<2;
+cadena="Otra cadena";
+cadena2="Otra cadena";
+cadena = "Otra más";
+textoquenosirve
+]
+*ola
+$$Fin de programa
