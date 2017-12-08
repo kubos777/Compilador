@@ -1,0 +1,25 @@
+$$Programa de prueba
+principal()
+[
+REAL x,y,r,e;
+ENT a,b;
+REAL q,w;
+x=2.2;
+y=x MENOS 0;
+LEE y;
+ESCRIBE "Valor de y es",y;
+$$Código extra
+x = 1 MULTIPLICA q;
+$$cadena = "Otra cadena";
+HAZ[ESCRIBE "a";]
+MIENTRAS(x < y);
+x = @a(a,a);
+SI(a < b)
+	LEE a;
+SINO 
+	ESCRIBE "HOLA";
+z = @ola();
+@test();
+]
+REAL otrafuncion() []
+$$Fin de programa
